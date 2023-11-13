@@ -70,3 +70,19 @@ $superheroes = [
   <li><?= $superhero['alias']; ?></li>
 <?php endforeach; ?>
 </ul>
+
+function findSuperhero($query, $superheroes)
+{
+    foreach ($superheroes as $superhero) {
+        if (strcasecmp($superhero['name'], $query) === 0 || strcasecmp($superhero['alias'], $query) === 0) {
+            return $superhero;
+        }
+    }
+    return null; 
+}
+
+if (isset($_GET['query'])) {
+    $query = $_GET['query'];
+    $result = findSuperhero($query, $superheroes);
+    echo $result;
+}

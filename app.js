@@ -1,10 +1,21 @@
 window.addEventListener("DOMContentLoaded", (event) => {
     document.getElementById('SearchBtn').addEventListener('click', function() {
+        var field = document.getElementById("SearchFld");
         var req = new XMLHttpRequest();
-        req.open('GET', 'superheroes.php', true);
-        req.send();
-        req.onload = function(){
-            alert(req.responseText);
-        };
+        if(field.value == ""){
+            req.open('GET', 'superheroes.php', true);
+            req.send();
+            req.onload = function(){
+                alert(req.responseText);
+            }
+        } else {
+            var input = field.value;
+            req.open('GET', 'superheroes.php?q=' + encodeURIComponent(input), true);
+            req.send();
+            req.onload = function(){
+                document.getElementById('Biography').innerHTML = req.responseText;
+                document.getElementById('HeroAlias').innerHTML = encodeURIComponent(input);
+            }
+        }
     });
 });
