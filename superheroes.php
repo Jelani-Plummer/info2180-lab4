@@ -1,5 +1,5 @@
 <?php
-
+header('Access-Control-Allow-Origin: *');
 $superheroes = [
   [
       "id" => 1,
@@ -71,18 +71,31 @@ $superheroes = [
 <?php endforeach; ?>
 </ul>
 
-function findSuperhero($query, $superheroes)
-{
-    foreach ($superheroes as $superhero) {
-        if (strcasecmp($superhero['name'], $query) === 0 || strcasecmp($superhero['alias'], $query) === 0) {
-            return $superhero;
-        }
-    }
-    return null; 
-}
+<?php
+$newString = filter_var($_GET['query'], FILTER_SANITIZE_STRING);
 
-if (isset($_GET['query'])) {
-    $query = $_GET['query'];
-    $result = findSuperhero($query, $superheroes);
-    echo $result;
-}
+if ($newString === ""):
+    echo '<ul>';
+    foreach ($superheroes as $superhero):
+        echo '<li>', $superhero['alias'], '</li>';
+    endforeach;
+    echo '</ul>';
+else:
+    $superheroFound = false;
+    foreach ($superheroes as $superhero):
+        if ($newString == $superhero['name'] or $newString == $superhero['alias']):
+            echo '<h3>', $superhero['alias'], '</h3>';
+            echo '<h4>', $superhero['name'], '</h4>';
+            echo '<p>', $superhero['biography'], '</p>';
+            $superheroFound = true;
+            break;
+        endif;
+    endforeach;
+
+    if (!$superheroFound):
+        echo '<font color="red"><h2>SUPERHERO NOT FOUND</h2></font>';
+    endif;
+endif;
+?>
+
+

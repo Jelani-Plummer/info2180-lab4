@@ -13,8 +13,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
             req.open('GET', 'superheroes.php?q=' + encodeURIComponent(input), true);
             req.send();
             req.onload = function(){
-                document.getElementById('Biography').innerHTML = req.responseText;
-                document.getElementById('HeroAlias').innerHTML = encodeURIComponent(input);
+                //output hero information
             }
         }
     });

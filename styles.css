@@ -1,34 +1,48 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto|Taviraj');
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f0f0f0;
+  margin: 0;
+  padding: 0;
+}
+
 h1 {
-    font-family: Taviraj, Georgia, serif;
+  text-align: center;
+  color: #333;
 }
 
-table {
-  border-collapse: collapse;
-  /*border-spacing: 5px;*/
-  font-family: Roboto, Helvetica, Arial, sans-serif;
-  margin: 20px auto;
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
 }
 
-th,
-td {
-  padding: 10px 15px;
+button:hover {
+  background-color: #45a049;
 }
 
-thead {
-  background: #395870;
-  color: #fff;
+input {
+  width: 80%;
+  padding: 10px;
+  margin: 10px 0;
+  font-size: 16px;
 }
 
-tbody tr:nth-child(even) {
-  background: #f0f0f2;
+#Result {
+  display: none;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  padding: 20px;
+  margin: 20px 0;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-td {
-  border-bottom: 1px solid #cecfd5;
-  border-right: 1px solid #cecfd5;
+#Result h3, #Result h4 {
+  color: #333;
 }
 
-td:first-child {
-  border-left: 1px solid #cecfd5;
+#Result p {
+  color: #666;
 }
